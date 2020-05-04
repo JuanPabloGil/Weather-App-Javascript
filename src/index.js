@@ -1,3 +1,5 @@
+import './assets/css/style.css';
+
 let  searchInput = document.querySelector('.searchInput');
 let  searchButton = document.querySelector('.searchButton');
 let name = document.querySelector('.name');
