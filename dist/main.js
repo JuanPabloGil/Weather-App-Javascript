@@ -132,6 +132,30 @@ eval("var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/
 
 /***/ }),
 
+/***/ "./src/formatWeather.js":
+/*!******************************!*\
+  !*** ./src/formatWeather.js ***!
+  \******************************/
+/*! exports provided: format */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"format\", function() { return format; });\n/* harmony import */ var _helper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helper */ \"./src/helper.js\");\n/* harmony import */ var _manageDom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./manageDom */ \"./src/manageDom.js\");\n\n\n\nconst format = (function(){\n\n  function getWeather(city){\n\n    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=436dd24bce78a2c523210e1f077bf18b`)\n      .then(function(response) {\n        return response.json();\n      })\n      .then(function(data){\n          let relevant = relevantData(data);\n          _manageDom__WEBPACK_IMPORTED_MODULE_1__[\"display\"].data(relevant);\n          console.log(data);\n\n      })\n    };\n\n    function relevantData(data){\n      let weatherData = {};\n\n      weatherData.name = data.name;\n      weatherData.tempC = _helper__WEBPACK_IMPORTED_MODULE_0__[\"helper\"].kelvinToCelcius(data.main.temp);\n      weatherData.tempF = _helper__WEBPACK_IMPORTED_MODULE_0__[\"helper\"].kelvinToFahrenheit(data.main.temp);\n      weatherData.humidity = data.main.humidity;\n      weatherData.pressure = data.main.pressure;\n      weatherData.description = data.weather[0].description;\n\n      return weatherData;\n    }\n\n\n    return {\n      getWeather,\n      relevantData\n    }\n\n  })();\n\n  \n\n\n//# sourceURL=webpack:///./src/formatWeather.js?");
+
+/***/ }),
+
+/***/ "./src/helper.js":
+/*!***********************!*\
+  !*** ./src/helper.js ***!
+  \***********************/
+/*! exports provided: helper */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"helper\", function() { return helper; });\nconst helper = (function(){\n\n  function kelvinToCelcius(temp){\n    temp = (temp - 273.15).toFixed(2) + ' C°';\n    return temp;\n  }\n\n  function kelvinToFahrenheit(temp){\n    temp = ((((temp - 273.15) * 9) / 5) + 32 ).toFixed(2) + ' F°';\n    return temp;\n  }\n\n  return{\n    kelvinToCelcius,\n    kelvinToFahrenheit\n  }\n\n})();\n\n\n\n\n//# sourceURL=webpack:///./src/helper.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -140,7 +164,19 @@ eval("var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/css/style.css */ \"./src/assets/css/style.css\");\n/* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_assets_css_style_css__WEBPACK_IMPORTED_MODULE_0__);\n\n\nlet  searchInput = document.querySelector('.searchInput');\nlet  searchButton = document.querySelector('.searchButton');\nlet name = document.querySelector('.name');\nlet weather = document.querySelector('.weather');\n\nfunction kelvinToCelcius(temp){\n  temp = (temp - 273.15).toFixed(2) + ' C°';\n  return temp;\n}\n\nfunction kelvinToFahrenheit(temp){\n  temp = ((((temp - 273.15) * 9) / 5) + 32 ).toFixed(2) + ' F°';\n  return temp;\n}\n\nsearchButton.addEventListener('click', () => {\n  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${searchInput.value}&appid=436dd24bce78a2c523210e1f077bf18b`)\n\n    .then(function(response) {\n      return response.json();\n    })\n\n    .then(function(data){\n      console.log(data);\n      name.innerHTML = data.name;\n      weather.innerHTML = kelvinToFahrenheit(data.main.temp) ;\n    })\n\n    .catch(err => alert('WRONG CITY NAME!'))\n  });\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/css/style.css */ \"./src/assets/css/style.css\");\n/* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_assets_css_style_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _formatWeather__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./formatWeather */ \"./src/formatWeather.js\");\n\n\n\n\nlet  searchInput = document.querySelector('.searchInput');\nlet  searchButton = document.querySelector('.searchButton');\n\n\nsearchButton.addEventListener('click', () => {\n    _formatWeather__WEBPACK_IMPORTED_MODULE_1__[\"format\"].getWeather(searchInput.value);\n});\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/manageDom.js":
+/*!**************************!*\
+  !*** ./src/manageDom.js ***!
+  \**************************/
+/*! exports provided: display */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"display\", function() { return display; });\nconst display = (function() {\n\n  function data(data) {\n    document.querySelector(\".name\").innerHTML = data.name;\n    document.querySelector(\".humidity\").innerHTML = \"Humidity: \" + data.humidity + \"%\";\n    document.querySelector(\".weatherC\").innerHTML = data.tempC;\n    document.querySelector(\".weatherF\").innerHTML = data.tempF;\n    document.querySelector(\".pressure\").innerHTML = \"Pressure: \" + data.pressure;\n    document.querySelector(\".description\").innerHTML = \"Description: \" + data.description;\n\n  }\n\n\n  return {\n    data,\n  }\n\n})();\n\n\n\n\n//# sourceURL=webpack:///./src/manageDom.js?");
 
 /***/ })
 
