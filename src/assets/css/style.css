@@ -3,3 +3,71 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(67,67,179,1) 45%, rgba(0,212,255,1) 100%);
+  color: white;
+}
+footer {
+  background: white;
+  color: black;
+}
+
+.search {
+    padding: 30px;
+    text-align: center;
+}
+
+.input-form {
+    margin-top: 50px;
+}
+
+.searchInput {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: white;
+  color: white;
+  background: none;
+  font-size: 20px;
+}
+
+.searchButton {
+  outline: 0;
+  border-width: 0;
+  color: white;
+  background: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.output {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.icon {
+  width: 200px;
+}
+
+.temps {
+  padding:  40px;
+}
+
+.weatherC {
+  font-size: 45px;
+  padding: 10px
+
+}
+
+.weatherF {
+  font-size: 45px;
+  padding: 10px
+
+}
+
+.description {
+  padding: 20px;
+  text-transform: capitalize;
+  font-size: 25px;
+}

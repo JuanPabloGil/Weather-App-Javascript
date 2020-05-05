@@ -1,12 +1,12 @@
 const helper = (function(){
 
   function kelvinToCelcius(temp){
-    temp = (temp - 273.15).toFixed(2) + ' C°';
+    temp = (temp - 273.15).toFixed(1) + ' C°';
     return temp;
   }
 
   function kelvinToFahrenheit(temp){
-    temp = ((((temp - 273.15) * 9) / 5) + 32 ).toFixed(2) + ' F°';
+    temp = ((((temp - 273.15) * 9) / 5) + 32 ).toFixed(1) + ' F°';
     return temp;
   }
 
