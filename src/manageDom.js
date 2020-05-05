@@ -17,15 +17,15 @@ const display = (function display() {
     document.querySelector('.switch').style.display = 'inline-block';
   }
 
-  window.changeUnit = function changeUnit(){
-    if (document.querySelector('.checkbox').checked){
-        document.querySelector('.weatherC').style.display = 'none';
-        document.querySelector('.weatherF').style.display = 'block';
-    }else {
+  window.changeUnit = function changeUnit() {
+    if (document.querySelector('.checkbox').checked) {
+      document.querySelector('.weatherC').style.display = 'none';
+      document.querySelector('.weatherF').style.display = 'block';
+    } else {
       document.querySelector('.weatherC').style.display = 'block';
       document.querySelector('.weatherF').style.display = 'none';
     }
-  }
+  };
 
   function errorMessage(message) {
     const element = document.querySelector('.error');
