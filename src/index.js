@@ -1,5 +1,5 @@
 import './assets/css/style.css';
-import { format } from './formatWeather';
+import format from './formatWeather';
 
 
 const searchInput = document.querySelector('.searchInput');

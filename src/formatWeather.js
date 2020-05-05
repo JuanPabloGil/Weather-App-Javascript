@@ -1,5 +1,5 @@
-import { helper } from './helper';
-import { display } from './manageDom';
+import helper from './helper';
+import display from './manageDom';
 
 const format = (function format() {
   function relevantData(data) {
@@ -12,6 +12,7 @@ const format = (function format() {
     weatherData.pressure = data.main.pressure;
     weatherData.description = data.weather[0].description;
     weatherData.icon = helper.selectIcon(data.weather[0].icon);
+    weatherData.don = helper.dayOrNigth(data.weather[0].icon);
 
     return weatherData;
   }
@@ -37,4 +38,4 @@ const format = (function format() {
   };
 }());
 
-export { format };
+export default format;

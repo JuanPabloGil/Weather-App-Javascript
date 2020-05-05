@@ -1,4 +1,4 @@
-const helper = (function () {
+const helper = (function helper() {
   function kelvinToCelcius(temp) {
     temp = `${(temp - 273.15).toFixed(1)} C°`;
     return temp;
@@ -62,11 +62,16 @@ const helper = (function () {
     return text;
   }
 
+  function dayOrNigth(icon) {
+    return icon[icon.length - 1];
+  }
+
   return {
     kelvinToCelcius,
     kelvinToFahrenheit,
     selectIcon,
+    dayOrNigth,
   };
 }());
 
-export { helper };
+export default helper;
