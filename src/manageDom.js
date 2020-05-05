@@ -7,6 +7,7 @@ const display = (function() {
     document.querySelector(".weatherF").innerHTML = data.tempF;
     document.querySelector(".pressure").innerHTML = "Pressure: " + data.pressure;
     document.querySelector(".description").innerHTML = "Description: " + data.description;
+    document.querySelector(".icon").src = data.icon;
 
   }
 

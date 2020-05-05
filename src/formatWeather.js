@@ -20,12 +20,13 @@ const format = (function(){
     function relevantData(data){
       let weatherData = {};
 
-      weatherData.name = data.name;
+      weatherData.name = data.name + ", "+ data.sys.country;
       weatherData.tempC = helper.kelvinToCelcius(data.main.temp);
       weatherData.tempF = helper.kelvinToFahrenheit(data.main.temp);
       weatherData.humidity = data.main.humidity;
       weatherData.pressure = data.main.pressure;
       weatherData.description = data.weather[0].description;
+      weatherData.icon = helper.selectIcon(data.weather[0].icon);
 
       return weatherData;
     }
