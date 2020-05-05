@@ -14,8 +14,18 @@ const display = (function display() {
       document.body.style = `background: rgb(2,0,36);
       background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(67,67,179,1) 45%, rgba(0,212,255,1) 100%);`;
     }
+    document.querySelector('.switch').style.display = 'inline-block';
   }
 
+  window.changeUnit = function changeUnit(){
+    if (document.querySelector('.checkbox').checked){
+        document.querySelector('.weatherC').style.display = 'none';
+        document.querySelector('.weatherF').style.display = 'block';
+    }else {
+      document.querySelector('.weatherC').style.display = 'block';
+      document.querySelector('.weatherF').style.display = 'none';
+    }
+  }
 
   function errorMessage(message) {
     const element = document.querySelector('.error');
